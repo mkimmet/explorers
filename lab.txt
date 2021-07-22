@@ -57,22 +57,20 @@
 602 POKE 232,FO - INT (FO / 256) * 256 
 603 POKE 233, INT (FO / 256)
 604 SCALE = 1: ROT = 0: HCOLOR=3
-605 L1$ = "X Y Z X Y Z X Y Z"
-610 L2$ = "POS  " + STR$(X)+"  "+STR$(Y)+"  "+STR$(Z)
-640 XF = 150 : XY = 160
-650 FOR L = 1 TO LEN(L1$) 
-660 XB$ = MID$(L1$,L)     
+640 XF = 150 : XY = 150
+642 DIM U$(2)
+643 U$(1) = "X Y Z X Y Z X Y Z"
+644 U$(2) = "POS  " + STR$(X)+"  "+STR$(Y)+"  "+STR$(Z)
+646 FOR D = 1 TO 2
+648 XY = XY + 10
+650 FOR L = 1 TO LEN(U$(D)) 
+660 XB$ = MID$(U$(D),L)     
 670 C = (ASC(XB$) - 31) 
 680 DRAW C AT XF,XY
 690 XF = XF + 6
 700 NEXT L
-702 XF = 150 : XY = 170
-704 FOR L = 1 TO LEN(L2$) 
-706 XB$ = MID$(L2$,L)     
-708 C = (ASC(XB$) - 31) 
-710 DRAW C AT XF,XY
-712 XF = XF + 6
-714 NEXT L
+702 XF = 150
+704 NEXT D
 744 RETURN
 
 800 REM ******** POINT TO SPHERES*******
